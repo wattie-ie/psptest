@@ -44,6 +44,8 @@ jobs:
           api_key: ${{ secrets.NEON_API_KEY }}
           username: ${{ secrets.NEON_DB_USER }}
           password: ${{ secrets.NEON_DB_PASSWORD }}
+        
+      - run: echo db_url ${{ steps.create-branch-db.outputs.db_url }}
 
       - name: Install Platformatic app dependencies
         run: npm install --omit=dev
