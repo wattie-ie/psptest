@@ -1,7 +1,6 @@
 CREATE TABLE posts (
   id INTEGER PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
-  subtitle VARCHAR(255),
   body TEXT NOT NULL,
   author_user_id VARCHAR(255),
   author_name VARCHAR(255),
