@@ -47,7 +47,7 @@ jobs:
       - name: Install Platformatic app dependencies
         run: npm install --omit=dev
 
-      - name: Deploy preview app to Platformatic Cloud
+      - name: Deploy preview app to Platformatic Cloud hopefully
         id: deploy-preview-app
         uses: platformatic/onestep@latest
         with:
