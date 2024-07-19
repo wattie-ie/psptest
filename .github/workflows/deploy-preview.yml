@@ -17,6 +17,7 @@ jobs:
     outputs:
       platformatic_app_url: ${{ steps.deploy-preview-app.outputs.platformatic_app_url }}
       neon_branch_url: https://console.neon.tech/app/projects/${{ vars.NEON_PROJECT_ID }}/branches/${{ steps.create-branch-db.outputs.branch_id }}
+      neon_database_url: ${{ steps.create-branch-db.outputs.db_url }}/neondb
     defaults:
       run:
         working-directory: blog-api
@@ -43,6 +44,8 @@ jobs:
           api_key: ${{ secrets.NEON_API_KEY }}
           username: ${{ secrets.NEON_DB_USER }}
           password: ${{ secrets.NEON_DB_PASSWORD }}
+        
+      - run: echo db_url ${{ steps.create-branch-db.outputs.db_url }}
 
       - name: Install Platformatic app dependencies
         run: npm install --omit=dev
@@ -83,5 +86,6 @@ jobs:
 
             ### :elephant: Blog branch database
             ${{ needs.build-and-deploy-api.outputs.neon_branch_url }} (Neon)
+            ${{ needs.build-and-deploy-api.outputs.neon_database_url}} (Database url)
           comment_tag: preview-app-urls
           mode: upsert
